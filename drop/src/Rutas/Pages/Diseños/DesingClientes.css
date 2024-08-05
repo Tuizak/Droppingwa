@@ -1,0 +1,168 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e5e7eb; /* Light grey background for contrast */
+}
+
+.navbar {
+  height: 60px; /* Adjust according to the actual size of your navbar */
+}
+
+.clientes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 80px; /* Space at the top to avoid covering the navbar */
+  margin-left: 250px; /* Adjust according to the width of the navbar */
+}
+
+.clientes-container h2 {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: fit-content;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  background-color: #4a5568;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Table Styles */
+.table-wrapper {
+  overflow-x: auto; /* Allow horizontal scrolling */
+  width: 100%;
+  max-width: 1200px; /* Adjust as necessary */
+  margin: 0 auto; /* Center the table horizontally */
+  background-color: #1a202c; /* Dark background for the table */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  max-height: 70vh; /* Limit height and allow scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Center horizontally */
+  text-align: left; /* Align text to the left */
+  color: #e2e8f0; /* Light text color */
+}
+
+.clientes-table th,
+.clientes-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #4a5568; /* Light grey border */
+}
+
+.clientes-table th {
+  background-color: #2d3748; /* Darker background color for headers */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+}
+
+.clientes-table tbody tr:nth-child(even) {
+  background-color: #2d3748; /* Dark grey background for even rows */
+}
+
+.clientes-table tbody tr:nth-child(odd) {
+  background-color: #1a202c; /* Darker grey background for odd rows */
+}
+
+.clientes-table tbody tr:hover {
+  background-color: #4a5568; /* Change color on hover */
+  color: white; /* Text color change on hover */
+}
+
+.clientes-table td {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Button Styles */
+.baja-button, .alta-button {
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.baja-button {
+  background-color: #e53e3e; /* Red background */
+}
+
+.baja-button:hover {
+  background-color: #c53030; /* Darker red on hover */
+}
+
+.alta-button {
+  background-color: #38a169; /* Green background */
+}
+
+.alta-button:hover {
+  background-color: #2f855a; /* Darker green on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clientes-container {
+    padding: 10px;
+    padding-top: 80px; /* Space at the top to avoid covering the navbar */
+    margin-left: 0; /* Remove left margin for smaller screens */
+  }
+
+  .clientes-table {
+    width: 100%;
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .clientes-table th,
+  .clientes-table td {
+    padding: 10px;
+  }
+
+  .clientes-table thead {
+    display: none; /* Hide table headers on small screens */
+  }
+
+  .clientes-table tbody tr {
+    display: block; /* Display rows as blocks */
+    margin-bottom: 10px; /* Space between rows */
+    background-color: #1a202c; /* Darker background for mobile rows */
+    border-radius: 8px; /* Rounded corners for mobile rows */
+    padding: 10px; /* Padding for mobile rows */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+
+  .clientes-table tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #4a5568; /* Light grey border */
+  }
+
+  .clientes-table tbody tr td::before {
+    content: attr(data-label); /* Show labels */
+    font-weight: bold; /* Bold labels */
+    text-align: left; /* Align labels to the left */
+    color: #cbd5e0; /* Light text color for labels */
+    width: 50%;
+    flex-shrink: 0;
+  }
+}

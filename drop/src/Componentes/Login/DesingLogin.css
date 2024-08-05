@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #919191; /* Light grey background for contrast */
+  height: 100vh; /* Set body height to 100% of viewport height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.container-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  padding: 20px; /* Add padding for better responsiveness */
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically by default */
+  background-color: #001f3f; /* Dark navy blue */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 92%;
+  max-width: 800px;
+  margin: 0 auto; /* Center horizontally */
+}
+
+.image-section {
+  background-size: cover;
+  width: 100%; /* Full width in small screens */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 122%;
+  height: auto;
+  border-radius: 2%;
+}
+
+.form-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%; /* Full width in small screens */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Add spacing between form elements */
+}
+
+form label {
+  color: #f5f2f2;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 14px; /* Smaller font size for labels */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 2px solid #f5f2f2;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px;
+  font-family: 'Helvetica', sans-serif; /* Change font */
+  background-color: transparent;
+  color: #f5f2f2;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%; /* Full width within the form section */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.input-field::placeholder {
+  color: #d0d0d0;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.submit-button {
+  background-color: #005f9f; /* Lighter blue */
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Helvetica', sans-serif; /* Change font */
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 20px;
+  width: 100%; /* Full width within the form section */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.submit-button:hover {
+  background-color: #003f7f; /* Darker blue for hover */
+  transform: scale(1.05); /* Scale effect */
+}
+
+.submit-button:active {
+  background-color: #002f5f; /* Darker blue for active */
+  transform: scale(0.95); /* Scale effect */
+}
+
+.text {
+  color: #f0f2f5;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .form-wrapper {
+    flex-direction: row; /* Arrange elements side by side on larger screens */
+  }
+
+  .image-section {
+    width: 50%; /* Adjust image section width on larger screens */
+    margin-right: 20px; /* Add space between the image and form section */
+  }
+
+  .form-section {
+    width: 50%; /* Adjust form section width on larger screens */
+  }
+}

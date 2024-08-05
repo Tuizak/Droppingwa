@@ -1,0 +1,188 @@
+/* Estilos para el Navbar */
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el nav horizontal */
+.nav-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #001f3f;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.nav-2 .horizontal-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-2 .horizontal-menu li {
+  margin: 0 20px;
+}
+
+.nav-2 .horizontal-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-2 .horizontal-menu li a:hover {
+  background-color: #005f9f;
+  transform: translateY(-5px);
+}
+
+.nav-2 .horizontal-menu li a:active,
+.nav-2 .horizontal-menu li a.active {
+  background-color: #003f7f;
+  font-weight: bold;
+}
+
+/* Estilos para el nav vertical */
+.vertical-nav {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: calc(100% - 50px);
+  width: 250px;
+  background-color: #001f3f;
+  color: white;
+  padding-top: 20px;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vertical-nav.hide {
+  transform: translateX(-100%);
+}
+
+.vertical-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vertical-nav ul li {
+  margin: 20px 0;
+}
+
+.vertical-nav ul li a,
+.menu-item {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: 'Helvetica', sans-serif;
+  cursor: pointer;
+}
+
+.vertical-nav ul li a:hover,
+.menu-item:hover {
+  background-color: #005f9f;
+  transform: translateX(10px);
+}
+
+.vertical-nav ul li a:active,
+.vertical-nav ul li a.active {
+  background-color: #003f7f;
+  font-weight: bold;
+}
+
+.vertical-nav ul li a .anticon,
+.menu-item .anticon {
+  margin-right: 10px;
+}
+
+/* Estilos para el contenedor del botón de cerrar sesión */
+.logout-button-container {
+  padding: 20px;
+  margin-top: auto; /* Asegura que el botón esté siempre en la parte inferior */
+}
+
+.logout-button {
+  width: 100%;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: 'Helvetica', sans-serif;
+  cursor: pointer;
+  background-color: #ff4d4f;
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.logout-button:hover {
+  background-color: #ff7875;
+  transform: translateY(-5px); /* Leve elevación al pasar el cursor */
+}
+
+.logout-button:active,
+.logout-button.active {
+  background-color: #ff7875;
+  font-weight: bold;
+}
+
+/* Estilos para el contenido */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(100% - 250px);
+  margin-top: 50px;
+}
+
+/* Estilo para el botón de toggle del menú vertical */
+.toggle-menu-button {
+  position: fixed;
+  top: 10px; /* Cambiado de 50px a 10px para alinearlo con el nav horizontal */
+  left: 10px; /* Ajustar según sea necesario */
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1100;
+  display: none; /* Se oculta inicialmente en pantallas grandes */
+}
+
+@media (max-width: 768px) {
+  .toggle-menu-button {
+    display: block; /* Se muestra en pantallas pequeñas */
+  }
+
+  .vertical-nav {
+    width: 250px; /* Ancho del menú vertical en pantallas pequeñas */
+  }
+
+  .vertical-nav.hide {
+    transform: translateX(-100%); /* Ocultar el menú vertical en pantallas pequeñas */
+  }
+
+  .content {
+    margin-left: 0; /* Sin margen izquierdo en pantallas pequeñas */
+    width: 100%;
+  }
+}

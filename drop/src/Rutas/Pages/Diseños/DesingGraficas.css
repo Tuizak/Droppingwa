@@ -1,0 +1,54 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #1a202c; /* Dark background for the whole app */
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.graficas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1a202c; /* Dark background similar to the provided image */
+  color: white;
+  min-height: 100vh; /* Ensure the container covers the full viewport height */
+}
+
+.chart-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 400px; /* Reduce max-width for smaller charts */
+  background-color: #2d3748; /* Darker background for individual chart containers */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 10px;
+}
+
+.chart-container h2 {
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #e2e8f0; /* Light text color */
+  text-align: center; /* Center align the chart titles */
+}
+
+@media (max-width: 768px) {
+  .chart-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
