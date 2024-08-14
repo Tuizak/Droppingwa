@@ -8,7 +8,7 @@ const Clientes = () => {
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/clientes');
+        const response = await axios.get('https://appi-wjk3.onrender.com/api/clientes-tinacos');
         setClientes(response.data);
       } catch (error) {
         console.error('Error fetching clientes:', error);
@@ -26,10 +26,9 @@ const Clientes = () => {
     const confirmAction = window.confirm(confirmMessage);
     if (confirmAction) {
       try {
-        console.log(`Sending PUT request for cliente id ${id} with data:`, { Estado: nuevoEstado });
-        const response = await axios.put(`http://localhost:3001/api/cliente/id/${id}`, { Estado: nuevoEstado });
+        const response = await axios.put(`https://appi-wjk3.onrender.com/api/cliente/id/${id}`, { Estado: nuevoEstado });
         if (response.status === 200) {
-          setClientes(clientes.map(cliente => cliente.id === id ? { ...cliente, Estado: nuevoEstado } : cliente));
+          setClientes(clientes.map(cliente => cliente.id_cliente === id ? { ...cliente, Estado: nuevoEstado } : cliente));
         } else {
           console.error('Failed to update cliente:', response);
         }
@@ -52,25 +51,27 @@ const Clientes = () => {
               <th>Correo</th>
               <th>Municipio</th>
               <th>Dirección</th>
-              <th>Estado</th>
+              <th>Tinacos</th>
+              <th>Capacidades</th>
               <th>Acción</th>
             </tr>
           </thead>
           <tbody>
             {clientes.map((cliente) => (
-              <tr key={cliente.id}>
-                <td data-label="ID">{cliente.id}</td>
-                <td data-label="Nombre">{cliente.Nombre}</td>
+              <tr key={cliente.id_cliente}>
+                <td data-label="ID">{cliente.id_cliente}</td>
+                <td data-label="Nombre">{cliente.Nombre_Cliente}</td>
                 <td data-label="Celular">{cliente.Celular}</td>
                 <td data-label="Correo">{cliente.Correo}</td>
                 <td data-label="Municipio">{cliente.Municipio}</td>
-                <td data-label="Dirección">{cliente.Direccion}</td>
-                <td data-label="Estado">{cliente.Estado}</td>
+                <td data-label="Dirección">{cliente.Direccion_Cliente}</td>
+                <td data-label="Tinacos">{cliente.ids_tinacos}</td>
+                <td data-label="Capacidades">{cliente.capacidades_tinacos}</td>
                 <td>
                   {cliente.Estado === 'Activo' ? (
-                    <button className="baja-button" onClick={() => handleEstadoCliente(cliente.id, 'Inactivo')}>Dar de baja</button>
+                    <button className="baja-button" onClick={() => handleEstadoCliente(cliente.id_cliente, 'Inactivo')}>Dar de baja</button>
                   ) : (
-                    <button className="alta-button" onClick={() => handleEstadoCliente(cliente.id, 'Activo')}>Dar de alta</button>
+                    <button className="alta-button" onClick={() => handleEstadoCliente(cliente.id_cliente, 'Activo')}>Dar de alta</button>
                   )}
                 </td>
               </tr>

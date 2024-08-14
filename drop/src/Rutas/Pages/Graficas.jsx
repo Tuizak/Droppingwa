@@ -1,49 +1,58 @@
-import React from 'react';
-import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './Diseños/DesingGraficas.css';
+import axios from 'axios';
 
 const Graficas = () => {
-  const lineData = {
-    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    datasets: [
-      {
-        label: 'Consumo de Agua (litros)',
-        data: [300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400],
-        borderColor: '#42a5f5',
-        backgroundColor: 'rgba(66, 165, 245, 0.2)',
-        fill: true,
-      },
-    ],
-  };
+  const [totalClientes, setTotalClientes] = useState(0);
+  const [clientesPorMunicipio, setClientesPorMunicipio] = useState([]);
 
-  const barData = {
-    labels: ['San Luis Rio Colorado', 'Ejido Islitas', 'Ejido Adelitas'],
-    datasets: [
-      {
-        label: 'Clientes por Municipio',
-        data: [150, 100, 50],
-        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'],
-      },
-    ],
-  };
+  useEffect(() => {
+    // Obtener total de clientes registrados
+    axios.get('https://appi-wjk3.onrender.com/api/clientes')
+      .then(response => {
+        setTotalClientes(response.data.length); // Asumiendo que cada cliente es un registro
 
-  const doughnutData = {
-    labels: ['San Luis Rio Colorado', 'Ejido Islitas', 'Ejido Adelitas'],
-    datasets: [
-      {
-        data: [32, 45, 23],
-        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'],
-      },
-    ],
-  };
+        // Agrupar clientes por municipio
+        const municipiosCount = response.data.reduce((acc, cliente) => {
+          const municipio = cliente.Municipio;
+          if (!acc[municipio]) {
+            acc[municipio] = 0;
+          }
+          acc[municipio]++;
+          return acc;
+        }, {});
+
+        // Convertir el objeto de conteo en un array para la gráfica
+        const municipios = Object.keys(municipiosCount);
+        const counts = Object.values(municipiosCount);
+
+        setClientesPorMunicipio(municipios.map((municipio, index) => ({
+          Municipio: municipio,
+          cantidad: counts[index]
+        })));
+      })
+      .catch(error => console.error('Error fetching total clientes:', error));
+  }, []);
 
   const totalClientesData = {
     labels: ['Clientes Registrados'],
     datasets: [
       {
-        data: [300],
+        data: [totalClientes],
         backgroundColor: ['#36a2eb'],
+      },
+    ],
+  };
+
+  const barData = {
+    labels: clientesPorMunicipio.map(item => item.Municipio),
+    datasets: [
+      {
+        label: 'Clientes por Municipio',
+        data: clientesPorMunicipio.map(item => item.cantidad),
+        backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'], // Ajustar los colores según la cantidad de municipios
       },
     ],
   };
@@ -58,12 +67,6 @@ const Graficas = () => {
         <div className="chart-container">
           <h2>Clientes por Municipio</h2>
           <Bar data={barData} />
-        </div>
-      </div>
-      <div className="chart-row">
-        <div className="chart-container">
-          <h2>Consumo de Agua por Mes</h2>
-          <Line data={lineData} />
         </div>
       </div>
     </div>

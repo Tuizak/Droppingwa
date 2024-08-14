@@ -19,13 +19,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensajeError(''); // Reiniciar el mensaje de error
+
     if (!nombre || !claveUnica || !contraseña) {
       setMensajeError('Todos los campos son obligatorios.');
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/Home', {
+      const response = await axios.post('https://appi-wjk3.onrender.com/Home', {
         nombre,
         claveUnica,
         contraseña
@@ -35,7 +36,14 @@ const Login = () => {
       login(userData); // Guardar datos del usuario en el contexto de autenticación
       navigate('/perfil'); // Redirigir al perfil después del inicio de sesión exitoso
     } catch (error) {
-      setMensajeError(error.response ? error.response.data : 'Error al iniciar sesión: ' + error.message);
+      if (error.response) {
+        // Error específico del servidor
+        setMensajeError(error.response.data || 'Error al iniciar sesión');
+      } else {
+        // Error de red o del cliente
+        setMensajeError('Error al iniciar sesión: ' + error.message);
+      }
+      console.error('Login error:', error); // Log adicional para depuración
     }
   };
 

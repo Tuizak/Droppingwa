@@ -12,7 +12,7 @@ const Entity = ({ entityName, entityFields }) => {
     }, []);
 
     const fetchEntities = async () => {
-        const res = await axios.get(`http://localhost:3001/api/${entityName}`);
+        const res = await axios.get(`https://appi-wjk3.onrender.com/api/${entityName}`);
         setEntities(res.data);
     };
 
@@ -22,15 +22,15 @@ const Entity = ({ entityName, entityFields }) => {
     };
 
     const createEntity = async () => {
-        await axios.post(`http://localhost:3001/api/${entityName}`, formData);
+        await axios.post(`https://appi-wjk3.onrender.com/api/${entityName}`, formData);
         setFormData({});
         fetchEntities();
     };
 
     const updateEntity = async () => {
         const url = searchField === 'id' ? 
-            `http://localhost:3001/api/${entityName}/id/${editId}` : 
-            `http://localhost:3001/api/${entityName}/nombre/${formData.Nombre}`;
+            `https://appi-wjk3.onrender.com/api/${entityName}/id/${editId}` : 
+            `https://appi-wjk3.onrender.com/api/${entityName}/nombre/${formData.Nombre}`;
         await axios.put(url, formData);
         setFormData({});
         setEditId(null);
@@ -39,16 +39,16 @@ const Entity = ({ entityName, entityFields }) => {
 
     const deleteEntity = async () => {
         const url = searchField === 'id' ? 
-            `http://localhost:3001/api/${entityName}/id/${editId}` : 
-            `http://localhost:3001/api/${entityName}/nombre/${formData.Nombre}`;
+            `https://appi-wjk3.onrender.com/api/${entityName}/id/${editId}` : 
+            `https://appi-wjk3.onrender.com/api/${entityName}/nombre/${formData.Nombre}`;
         await axios.delete(url);
         fetchEntities();
     };
 
     const searchEntity = async () => {
         const url = searchField === 'id' ? 
-            `http://localhost:3001/api/${entityName}/id/${editId}` : 
-            `http://localhost:3001/api/${entityName}/nombre/${formData.Nombre}`;
+            `https://appi-wjk3.onrender.com/api/${entityName}/id/${editId}` : 
+            `https://appi-wjk3.onrender.com/api/${entityName}/nombre/${formData.Nombre}`;
         const res = await axios.get(url);
         setEntities(res.data);
     };

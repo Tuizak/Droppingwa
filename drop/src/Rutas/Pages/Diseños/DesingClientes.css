@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #e5e7eb; /* Light grey background for contrast */
+  display: flex;
 }
 
 .navbar {
@@ -19,8 +20,10 @@ body {
   padding: 20px;
   padding-top: 80px; /* Space at the top to avoid covering the navbar */
   margin-left: 250px; /* Adjust according to the width of the navbar */
+  width: calc(100% - 250px); /* Adjust width to fit the space beside the nav */
 }
 
+/* Header Styles */
 .clientes-container h2 {
   color: #fff;
   padding: 10px 20px;
@@ -36,35 +39,33 @@ body {
 
 /* Table Styles */
 .table-wrapper {
-  overflow-x: auto; /* Allow horizontal scrolling */
   width: 100%;
-  max-width: 1200px; /* Adjust as necessary */
+  max-width: 100%; /* Ensure table takes full width */
   margin: 0 auto; /* Center the table horizontally */
   background-color: #1a202c; /* Dark background for the table */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  max-height: 70vh; /* Limit height and allow scrolling */
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scroll */
+  padding: 0; /* Remove padding */
 }
 
 .clientes-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 auto; /* Center horizontally */
   text-align: left; /* Align text to the left */
   color: #e2e8f0; /* Light text color */
 }
 
 .clientes-table th,
 .clientes-table td {
-  padding: 15px 20px;
+  padding: 12px 15px; /* Adjust padding for better spacing */
   border-bottom: 1px solid #4a5568; /* Light grey border */
 }
 
 .clientes-table th {
   background-color: #2d3748; /* Darker background color for headers */
   color: white;
-  font-size: 18px;
+  font-size: 16px; /* Adjust font size for headers */
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
@@ -84,7 +85,7 @@ body {
 }
 
 .clientes-table td {
-  font-size: 16px;
+  font-size: 14px; /* Adjust font size for table cells */
   font-family: 'Roboto', sans-serif;
 }
 
@@ -122,6 +123,11 @@ body {
     padding: 10px;
     padding-top: 80px; /* Space at the top to avoid covering the navbar */
     margin-left: 0; /* Remove left margin for smaller screens */
+    width: 100%;
+  }
+
+  .table-wrapper {
+    padding: 0; /* Remove padding */
   }
 
   .clientes-table {

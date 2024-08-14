@@ -7,6 +7,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #1a202c; /* Dark background for the whole app */
   overflow-y: scroll; /* Enable vertical scrolling */
+  display: flex; /* Align content to the right */
 }
 
 .graficas-container {
@@ -18,6 +19,8 @@ body {
   background-color: #1a202c; /* Dark background similar to the provided image */
   color: white;
   min-height: 100vh; /* Ensure the container covers the full viewport height */
+  margin-left: 220px; /* Adjust this value according to the width of your navigation menu */
+  width: calc(100% - 250px); /* Adjust width to fit the space beside the nav */
 }
 
 .chart-row {
@@ -30,7 +33,7 @@ body {
 
 .chart-container {
   width: 100%;
-  max-width: 400px; /* Reduce max-width for smaller charts */
+  max-width: 420px; /* Reduce max-width for smaller charts */
   background-color: #2d3748; /* Darker background for individual chart containers */
   padding: 20px;
   border-radius: 8px;
@@ -47,6 +50,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  .graficas-container {
+    margin-left: 0; /* Remove margin for small screens */
+    width: 100%;
+  }
+
   .chart-row {
     flex-direction: column;
     align-items: center;

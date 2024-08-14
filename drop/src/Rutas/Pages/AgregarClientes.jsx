@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Diseños/DesingAgregar.css'; // Importa tus estilos CSS personalizados
+import './Diseños/DesingAgregar.css';
 
 const AgregarClientes = () => {
   const [formData, setFormData] = useState({
     Nombre: '',
-    Municipio: '', // Corregido el nombre del campo
+    Municipio: '',
     Direccion: '',
     Celular: '',
     Correo: '',
     Contraseña: '',
-    Estado: 'Activo' // Valor predeterminado
+    Estado: 'Activo',
+    Litros: '' // Campo para la capacidad del tinaco
   });
 
   const handleInputChange = (e) => {
@@ -21,8 +22,30 @@ const AgregarClientes = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/cliente', formData);
-      alert('Cliente agregado exitosamente');
+      // Crear cliente
+      const responseCliente = await axios.post('https://appi-wjk3.onrender.com/api/cliente', {
+        Nombre: formData.Nombre,
+        Municipio: formData.Municipio,
+        Direccion: formData.Direccion,
+        Celular: formData.Celular,
+        Correo: formData.Correo,
+        Contraseña: formData.Contraseña,
+        Estado: formData.Estado
+      });
+
+      // Obtener el ID del cliente creado
+      const clienteId = responseCliente.data.insertId;
+
+      // Crear tinaco asociado
+      await axios.post('https://appi-wjk3.onrender.com/api/tinaco', {
+        id_cliente: clienteId,
+        Litros: formData.Litros,
+        Nivel: '0' 
+      });
+
+      
+
+      alert('Cliente y tinaco agregados exitosamente');
       setFormData({
         Nombre: '',
         Municipio: '',
@@ -30,11 +53,12 @@ const AgregarClientes = () => {
         Celular: '',
         Correo: '',
         Contraseña: '',
-        Estado: 'Activo'
+        Estado: 'Activo',
+        Litros: ''
       });
     } catch (error) {
-      console.error('Error al agregar el cliente', error);
-      alert('Hubo un error al agregar el cliente');
+      console.error('Error al agregar cliente o tinaco', error);
+      alert('Hubo un error al agregar el cliente o tinaco');
     }
   };
 
@@ -124,6 +148,21 @@ const AgregarClientes = () => {
             onChange={handleInputChange}
             required
           />
+        </div>
+        <div className="form-row">
+          <label htmlFor="Litros"><i className="fas fa-tachometer-alt"></i> Capacidad del Tinaco:</label>
+          <select
+            id="Litros"
+            name="Litros"
+            value={formData.Litros}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Seleccione capacidad</option>
+            <option value="1000">1000 Litros</option>
+            <option value="2000">2000 Litros</option>
+            <option value="5000">5000 Litros</option>
+          </select>
         </div>
         <button type="submit">Agregar Cliente</button>
       </form>

@@ -6,7 +6,7 @@ const Notificaciones = () => {
     const [mensajes, setMensajes] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/mensajes')
+        axios.get('https://appi-wjk3.onrender.com/api/mensajes')
             .then(response => {
                 setMensajes(response.data);
             })
