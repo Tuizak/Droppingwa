@@ -77,6 +77,7 @@ const NavBar = () => {
           </li>
           <li><Link to="/Graficas"><PieChartOutlined /> Gráficas</Link></li>
           <li><Link to="/Empleados"><SolutionOutlined /> Empleados</Link></li>
+          <li><Link to="/GraficasSensor"><PieChartOutlined /> Tinacos</Link></li>
         </ul>
         {user && (
           <div className="logout-button-container">

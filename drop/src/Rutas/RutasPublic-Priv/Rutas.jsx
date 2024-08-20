@@ -9,6 +9,7 @@ import Graficas from '../Pages/Graficas';
 import Notificaciones from '../Pages/Notificaciones';
 import Perfil from '../Pages/Perfil';
 import ProtectedRoute from './PrivateRoute'; // Ajusta la ruta de importación según sea necesario
+import GraficasSensor from '../Pages/GraficasSensor';
 
 const Rutas = () => {
   return (
@@ -23,6 +24,7 @@ const Rutas = () => {
           <Route path='/Graficas' element={<ProtectedRoute><Graficas /></ProtectedRoute>} />
           <Route path='/Notificaciones' element={<ProtectedRoute><Notificaciones /></ProtectedRoute>} />
           <Route path='/Perfil' element={<ProtectedRoute><Perfil /></ProtectedRoute>} />
+          <Route path='/GraficasSensor' element={<ProtectedRoute><GraficasSensor /></ProtectedRoute>} />
         </Routes>
       </div>
     </div>

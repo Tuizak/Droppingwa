@@ -1,0 +1,49 @@
+.chart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.chart-section {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart-item {
+  width: 100%;
+  max-width: 1000px;
+  height: 400px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #1a237e; /* Azul rey oscuro */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.percentage-display {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #1a237e; /* Azul rey oscuro */
+}
+
+@media (max-width: 768px) {
+  .chart-section {
+    flex: 1 1 100%;
+  }
+
+  .chart-item {
+    width: 90%;
+    height: 300px;
+  }
+}
